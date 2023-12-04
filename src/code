@@ -1,1 +1,20 @@
+this is a short pseudocode algorithm to demonstrate how the pigeonhole principle can be seen in programming based on the generalized definition:
 
+Generalized definition formula: N object count, k box count. there is atleast one box with ceil(N/k) objects
+the variables in this program will be undefined for ambiguity
+
+algorithm phprinciple () {
+  int N;
+  int[][] k;
+
+  for(int i = 0; i < N; i++) {
+    add 1 to a box k that has the current lowest value,                      //main loop, new objects must be put in a box
+        if there are multiple, use the lowest count in k arr
+    if all are the same, add one to any                                      //this is where pigeonhole principle comes into play
+                                                                               the new object must be placed somewhere, if all boxes k
+                                                                               are currently full or at the same value, the new object must
+                                                                               be put somewhere.
+  }
+  //post: i = N and the values in k[][] have been incremented a total of N times (not necessesarily to the same value)
+  //the pigeonhole principle predicts that atleast one value of k[] holds the value of ceil(N/k).
+}
