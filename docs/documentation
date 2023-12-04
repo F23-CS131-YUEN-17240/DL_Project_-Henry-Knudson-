@@ -4,75 +4,81 @@ It is also in plain text below:
 
 ---------------------------------------
 This is the script for my CS 131 Project for the winter 2023 semester. It takes the place of my notes. I included a short conclusion discussing my findings at the end.
+
+
 Contents
 We will be going over the base definition pigeonhole principle and some examples
 The generalized form of the pigeonhole principle and examples
 Proofs and corollaries relating to the principle
 Applications to another combinatorial theory, the ramsey theory
 And a pretty practical application where we can see the pigeonhole principle
+
+
 Definition
 The pigeonhole principle is a combinatorial tool we discussed in the counting section of the textbook.
-
 It follows that if k is a positive integer and k + 1 or more objects are placed into k boxes, then there is at least one box containing two or more objects.
-
 Each of these diagrams have 13 pigeons and 12 boxes. You can see that b shows what it would look like if we applied a new object to an unfilled box each time, at some point it becomes impossible to not double up on pigeons. In real world applications where we may not guarantee a new spot, you can see that pigeons double up much quicker like in a and c
+
+
 Here are some simple examples
 A quick advertisement jingle that is in the key of G major plays on tv. How many notes can there be before it is guaranteed that the jingle replays a note in the key. Let’s assume all notes are in the same octave.
 Well in this particular key there are 7 notes, G, A, B, C, D, E, and F#. After 7 notes, all of them have been played once which, if we are keeping these notes in the same octave, guarantees that the 8th note will be one that has already been played before.
 On a test graded on a scale from 0-100, how many students must there be before a repeat grade is guaranteed?
 Since a scale from 0-100 contains 101 possible scores because 0 and 100 are included, there must be 102 students before there will be at least two students with the same score.
+
+
 Generalized definition
 The original definition, while useful, has limited applications. What if we wanted to get the amount of objects to exceed a multiple of the numbers of boxes available?
-
 The generalized definition of the pigeonhole principle states that if n objects are placed into k boxes, then there is at least one box containing at least the ceiling of N divided by k objects.
+
+
 Examples
 Among 100 people, how many are guaranteed to be born in the same month?
-
 Since there are 100 people and 12 months, we can use the formula to see that the ceiling of 100/12 is 9.
 
 In some cases, we may be asked to find the minimum objects required in order to fill a defined number of boxes to a defined amount. How many cards from a standard deck of 52 must be selected to guarantee that at least 3 cards from the same suit are selected
 
-In problems like these i like to list all my variables first
+In problems like these I like to list all my variables first
 We have an unknown amount of cards required
 We know that 3 cards must be in a given suit for the proposition to be true
 We know there are 4 suits in a standard deck of cards
 
 Therefore we know that the formula must be the ceiling of N/4 is greater than or equal to 3.
 	The smallest integer value that meets this requirement is 9 because the ceiling of 8/4 is two and adding one more makes it 9 and that satisfies the formula ceiling n/4 is greater than or equal to 3.
+
+
 Proofs and Corollaries
 This slide contains the necessary proofs to know that the pigeonhole principle and generalized pigeonhole principle are valid in all cases. 
+
 Pigeonhole principle
 We use the proof of contraposition to prove this. If none of the k boxes already defined in theorem 1 contain more than 1 object, the most objects that could be in the situation are k. This is a contradiction because according to that same situation in theorem 1, there are at least k+1 objects.
+
 Generalized Pigeonhole Principle
 We use the proof of contraposition to prove this as well. If we suppose none of the k boxes defined in the theorem contain more than the ceiling of the number of objects N divided by the number of boxes k minus 1 objects, the total number of objects would be at more k times the ceiling of n/k - 1 is less than k times n divided by k + 1 - 1. The total number of objects is less than N and therefore the proof is complete.
+
 Corollary 1
-I will not be using this much in this presentation as it applies to sets, but I thought it would be important to mention. 
-
-a function from a set with k plus one or more elements to a set with k elements is not one-to-one
-
+I will not be using this much in this presentation as it applies to sets, but I thought it would be important to mention in these ntoes
+A function from a set with k plus one or more elements to a set with k elements is not one-to-one
 For every element y in the codomain of f we have a box that contains all elements x of the domain of f such that the function of f x is equal to y. Since the domain contains k plus 1 or more elements and the codomain contains only k elements, the pigeonhole principle tells us that one of these boxes contains two or more elements x of the domain. Therefore, f cannot be one-to-one
+
+
 Applications to Ramsey Theory
 The ramsey theory is a combinatorial theorem talked about very briefly in our textbook that roughly asks how big must structure S be to guarantee that property P holds?
-
 Assume that in a group of six people, each pair of individuals consists of two friends or enemies. Show that there are at least three mutual friends or three mutual enemies in the group.
-
 We let person A be one of the six people. Of the five other people in the group, there are either three or more who are friends of A or three or more who are enemies of A
-
 This comes from the generalized pigeonhole principle because 5 objects divided into two sets, one of the sets has at least the ceiling of 5 divided by 2 enemies which is 3.
-
 In the former case suppose person B, person C, and person D are all friends of person A. If two of these three are friends then these two + A form a group of three friends, otherwise B C and D for a set of three mutual enemies. If we do the same situation but with person B, C, and D all as enemies, the proof proceeds in a similar manner. Therefore there are either three mutual friends or three mutual enemies in the group.
-Real word applications
-For a real world situation we refer to Lossless data compression. For any implementation, lossless compression cannot guarantee compression for all input data sets. This means that for any algorithm there will be an input set that does not get smaller when processed and any algorithm that does make a file smaller, there will be at least one file that it makes larger. Lets see how this works
 
+
+Real word applications -- Lossless compression
+For a real world situation we refer to Lossless data compression. For any implementation, lossless compression cannot guarantee compression for all input data sets. This means that for any algorithm there will be an input set that does not get smaller when processed and any algorithm that does make a file smaller, there will be at least one file that it makes larger.
 We know an algorithm of lossless data compression, by definition, converts every file into an output no greater in size than the original and that at least one file will be compressed into a file that is shorter than the original.
-
 M is the least number such that there is a file F with length M bits which compresses to something shorter. Let N be the length (in bits) of the compressed version of F.
-
 Because N is less than M by definition, every file of length N will keep its size during compression. There are 2 to the power of N files possible. With file F, 2 to the power of N plus 1 files compress into one of 2 to the power of N files of length N.
-
 Since 2 to the power of N is smaller than 2 to the power of N + 1, the pigeonhole principle states there must be a file of length N that is simultaneously the output of the compression function on two different inputs. This file cannot be decompressed reliably as which of the two originals should yield and contradicts the assumption by definition that the algorithm was lossless. 
-
 Therefore we must conclude that the compression makes no file longer is necessarily untrue.
+
+
 Conclusion
 While it may seem like a pretty simple concept at first glance the pigeonhole principle has some very important and relevant applications in the real world. The pigeonhole principle has limited applications in writing code from what I have found, but it excels at helping us understand and plan for programming situations. It allows us to predict outcomes and better adapt our programs to account for said outcomes. An example is the lossless data compression, we are able to use the pigeonhole principle to predict what file size we may end up with depending on the files inputted. It is difficult to adapt this into code or pseudocode as it is less of a programming principle, and more of a mathematical principle to help us understand our programs, so I provided a real world example instead of a coded project. I will provide a short pseudocode program to show how the pigeonhole principle works.
 
